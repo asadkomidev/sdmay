@@ -6,14 +6,12 @@ export const predictImage = async (req, res) => {
 
     if (!image) return res.status(400).send("No image");
     let cleansedImage = image.replace(/^data:image\/\w+;base64,/, "");
-
     let b64string = cleansedImage;
-    //Buffer objects are used to represent a fixed-length sequence of bytes
     let buffer = Buffer.from(b64string, "base64");
 
     const requestToAWS = axios({
       method: "post",
-      url: " https://ivluhioxlc.execute-api.us-east-2.amazonaws.com/production/predict-cancer",
+      url: process.env.AWS_ENDPOINT,
       headers: {
         "Content-type": "application/x-image",
       },

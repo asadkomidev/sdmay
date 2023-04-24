@@ -1,11 +1,8 @@
 import express from "express";
+import { requireSignin } from "../middlewares";
 
 const router = express.Router();
 
-// middleware
-import { requireSignin } from "../middlewares";
-
-// controllers
 import { register, login, logout, currentUser } from "../controllers/auth";
 import { predictImage } from "../controllers/predict";
 

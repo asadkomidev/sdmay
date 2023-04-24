@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
-const { ObjectId } = Schema;
 
 const userSchema = new Schema(
   {
