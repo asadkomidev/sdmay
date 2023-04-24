@@ -11,15 +11,12 @@ const csrfProtection = csrf({ cookie: true });
 const app = express();
 
 mongoose
-  .connect(
-    "mongodb+srv://asadkomi:asadkomi@cluster0.fahmdtf.mongodb.net/test?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }
-  )
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log("**DB CONNECTED**"))
   .catch((err) => console.log("DB CONNECTION ERR => ", err));
 
